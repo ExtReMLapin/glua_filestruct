@@ -86,18 +86,6 @@ local function handleAction(action, file)
 
 	Error(string.format("Action : %s isn't implemented", action))
 end
-local fileStruct = { -- i had to do this ugly shit to conserv the order
-	{HEADER = "DATA_LENSTRING4"},
-	{Version = DATA_BYTE},
-	{SteamID_Unused = "DATA_SKIP8"},
-	{TimeStamp = DATA_64BITSDOUBLE},
-	{Junk = "DATA_SKIP1"},
-	{Title = DATA_STRING},
-	{Description = DATA_STRING},
-	{Author_string = DATA_STRING},
-	{Addon_version = DATA_4BYTES},
-}
-
 
 
 function parseFile(path, struct)
@@ -114,6 +102,20 @@ function parseFile(path, struct)
 
 	return outTbl
 end
+
+
+local fileStruct = { -- i had to do this ugly shit to conserv the order
+	{HEADER = "DATA_LENSTRING4"},
+	{Version = DATA_BYTE},
+	{SteamID_Unused = "DATA_SKIP8"},
+	{TimeStamp = DATA_64BITSDOUBLE},
+	{Junk = "DATA_SKIP1"},
+	{Title = DATA_STRING},
+	{Description = DATA_STRING},
+	{Author_string = DATA_STRING},
+	{Addon_version = DATA_4BYTES},
+}
+
 
 local tbl = parseFile("data/test.gma", fileStruct)
 PrintTable(tbl)
