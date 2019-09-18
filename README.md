@@ -1,4 +1,4 @@
-# glua_filestruct
+# glua_filestruct unfinished
 
 
 Parse files using structs
